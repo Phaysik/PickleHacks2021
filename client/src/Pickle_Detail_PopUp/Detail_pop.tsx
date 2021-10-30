@@ -1,6 +1,6 @@
 import './Detail_pop.css';
 import { PickleData } from '../types/PickleBoxAttrs';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 type DetailProps = {
 	name: string;
@@ -8,6 +8,7 @@ type DetailProps = {
 };
 
 type DetailState = {
+	pickle_name: string
 	pickle_id: number;
 	facts: any;
 	pickle_desc: string;
@@ -21,18 +22,28 @@ export default class Detail_pop extends React.Component<
 	constructor(props: DetailProps) {
 		super(props);
 
+		console.log(this.props.pickles)
+
 		this.state = {
+			pickle_name: "",
 			pickle_id: 0,
 			pickle_desc: '',
 			pickle_image_url: '/pickle_test_image.jpg',
 			facts: null,
 		};
-
-		this.update();
 	}
 
 	componentDidUpdate() {
-		this.update();
+		try{
+			this.update()
+		}
+		catch (err)
+		{
+			console.log("ERROR----------")
+			console.log(this.props.name)
+			console.log(err)
+			console.log("-----------ERROR")
+		}
 	}
 
 	private update() {
@@ -44,11 +55,13 @@ export default class Detail_pop extends React.Component<
 					})
 					.indexOf(this.props.name)
 			];
+		console.log(data)
 
 		let fact_key = Object.keys(data.facts);
 		let fact_values = Object.values(data.facts);
 
-		this.state = {
+		this.setState({
+			pickle_name: data.name,
 			pickle_id: data.id,
 			pickle_image_url: data.filePath,
 			pickle_desc: data.description,
@@ -74,7 +87,9 @@ export default class Detail_pop extends React.Component<
 					</table>
 				</div>
 			),
-		};
+		});
+
+		console.log(this.state.pickle_id)
 	}
 
 	render() {
@@ -84,12 +99,12 @@ export default class Detail_pop extends React.Component<
 					<div className="leftimage">
 						<img
 							src={this.state.pickle_image_url}
-							alt={'An image of ' + this.props.name}
-							title={'An image of ' + this.props.name}
+							alt={'An image of ' + this.state.pickle_name}
+							title={'An image of ' + this.state.pickle_name}
 						/>
 					</div>
 					<div className="righttext">
-						<h4> Pickle Name: {this.props.name} </h4>
+						<h4> Pickle Name: {this.state.pickle_name} </h4>
 						<h4> Pickle ID: {this.state.pickle_id} </h4>
 					</div>
 				</div>
