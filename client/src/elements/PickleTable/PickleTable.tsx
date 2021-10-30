@@ -1,5 +1,6 @@
 import PickleBoxAttrs from '../../types/PickleBoxAttrs';
 import PickleBox from '../PickleBox/PickleBox';
+import logo from './pickle.png';
 import './PickleTable.scss';
 
 const els: PickleBoxAttrs[] = Array(108).fill({ abbr: 'H', name: 'Hydrogen', weight: 1.008 }).map((el, i) => ({ ...el, id: i + 1 }));
@@ -20,7 +21,9 @@ export default function PickleTable() {
 
             <div className="Key"></div>
             <div className="NullSpace"></div>
-            <div className="LogoSpace"></div>
+            <div className="LogoSpace">
+                <img src={logo} alt="PickleHacks 2021" />
+            </div>
             <div className="Note">For elements with no stable isotopes, the mass number of the isotope with the longest half-life is in parentheses.</div>
             <PickleBox legend id="Atomic" abbr="Symbol" name="Name" weight="Weight"></PickleBox>
 
