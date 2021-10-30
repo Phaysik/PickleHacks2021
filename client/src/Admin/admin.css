@@ -6,12 +6,9 @@
 html,
 body {
   height: 100vh;
-  background: #666666;
-  font-family: 'Balsamiq Sans', sans-serif;
 }
 
 body {
-  padding-top: 2em;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,12 +1,3 @@
-export interface PickleBoxAttrs {
-	id: number | 'Atomic';
-	abbr: string;
-	name: string;
-	weight: number | 'Weight';
-	legend?: boolean;
-	split?: 6 | 7;
-}
-
 export interface PickleData {
 	id: number;
 	name: string;
@@ -14,4 +5,12 @@ export interface PickleData {
 	filePath: string;
 	description: string;
 	split?: 6 | 7;
+}
+
+export interface PickleBoxAttrs {
+	id: number | 'Atomic';
+	name: string;
+	legend?: boolean;
+	split?: 6 | 7;
+  currentPickle?: React.Dispatch<React.SetStateAction<string | undefined>>
 }

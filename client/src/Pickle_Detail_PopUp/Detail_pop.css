@@ -18,9 +18,12 @@ img {
 }
 
 .Popup {
-  background-color: rgb(30,30,30);
-  color:lightgray;
-  border-radius: 2.5%;
+  background-color: var(--blocks);
+  color:rgb(var(--text));
+  border-radius: 0.125rem;
+  padding: calc(var(--margin) * 1.5) var(--2margin) var(--2margin) var(--margin);
+  box-shadow: 0 1px 3px var(--lightshadow), 0 1px 2px var(--darkshadow);
+  margin: var(--margin);
 }
 
 .facts {

@@ -19,6 +19,11 @@ code {
   width: inherit;
 }
 
+a {
+  color: initial;
+  text-decoration: none;
+}
+
 html,
 body {
   height: 100%;
