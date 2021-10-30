@@ -1,17 +1,17 @@
 import React from 'react';
 import PickleTable from '../PickleTable/PickleTable';
-import Detail_pop from '../../Pickle_Detail_PopUp/Detail_pop';
+import DetailPopUp from '../../DetailPopUp/DetailPopUp';
 import axios from 'axios';
 import { PickleData } from '../../types/PickleBoxAttrs';
 import './PicklePeriodic.scss';
 
 const PicklePeriodic = () => {
 	const [pickles, setPickles] = React.useState<PickleData[]>([]);
-  const [current_pickle, setCurrentPickle] = React.useState<string>();
+	const [current_pickle, setCurrentPickle] = React.useState<string>();
 
 	React.useEffect(() => {
 		axios
-			.get('http://192.168.0.120:5000/pickle/get')
+			.get('http://localhost:5000/pickle/get')
 			.then((res) => {
 				setPickles(res.data);
 			})
@@ -22,11 +22,10 @@ const PicklePeriodic = () => {
 
 	return (
 		<div className="PicklePeriodic">
-			<PickleTable pickles={pickles} currentPickle={setCurrentPickle}/>
-			<Detail_pop name={current_pickle!} pickles={pickles}/>
+			<PickleTable pickles={pickles} currentPickle={setCurrentPickle} />
+			<DetailPopUp name={current_pickle!} pickles={pickles} />
 		</div>
 	);
 };
-
 
 export default PicklePeriodic;
