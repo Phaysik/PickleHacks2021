@@ -19,7 +19,7 @@ recordRoutes.route('/pickle/get').get((req, res) => {
 		.find({})
 		.toArray((err, result) => {
 			if (err) throw err;
-			res.json(result);
+			res.json(result.sort((a, b) => a.id - b.id));
 		});
 });
 
