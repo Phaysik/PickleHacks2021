@@ -18,7 +18,11 @@ img {
 }
 
 .Popup {
-  background-color: var(--blocks);
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 32%;
+
+  min-width: 0;
   color:rgb(var(--text));
   border-radius: 0.125rem;
   padding: calc(var(--margin) * 1.5) var(--2margin) var(--2margin) var(--margin);
@@ -26,8 +30,8 @@ img {
   margin: var(--margin);
 }
 
-.facts {
-  background-color: rgb(20,20,20);
+.Popup, .facts, .fact_value {
+  background-color: var(--blocks);
 }
 
 .fact_table {
@@ -37,7 +41,7 @@ img {
 
 .fact_header {
   width: 100%;
-  background: rgb(50,50,50);
+  background-color: var(--selected);
   border-bottom: 1px solid rgb(100, 100, 100);
 }
 
@@ -45,7 +49,6 @@ img {
   border-bottom: 1px solid rgb(100, 100, 100);
 }
 .fact_value {
-  background-color: rgb(35,35,35);
   width: 30%;
 }
 

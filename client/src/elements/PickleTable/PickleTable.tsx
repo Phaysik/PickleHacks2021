@@ -14,7 +14,7 @@ const splitSections = {
 
 const PickleTable = ({ pickles, currentPickle }: { pickles: PickleData[], currentPickle: React.Dispatch<React.SetStateAction<string | undefined>>; }) => {
     const renderPickle = (props: PickleData) => (
-        <PickleBox key={props.id} {...props} currentPickle={currentPickle} />
+        <PickleBox key={props.id} {...props} radio={props.facts.radioactivity} currentPickle={currentPickle} />
     );
     const renderPickleRange = (start: number, stop: number) =>
         pickles.slice(start, stop).map(renderPickle);
@@ -41,7 +41,7 @@ const PickleTable = ({ pickles, currentPickle }: { pickles: PickleData[], curren
                 For elements with no stable isotopes, the mass number of the isotope
                 with the longest half-life is in parentheses.
             </div>
-            <PickleBox legend id="Atomic" name="Name" />
+            <PickleBox legend abbr="Symbol" id="Atomic" name="Name" radio="Radioactivity" />
 
             <div className="Period">1</div>
             {renderPickleRange(0, 2)}

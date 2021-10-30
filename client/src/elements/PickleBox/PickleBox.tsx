@@ -10,13 +10,14 @@ export default function PickleBox(props: PickleBoxAttrs) {
         Split7: props.split === 7
     });
     const changePickle = () => { if (props.currentPickle) props.currentPickle(props.name); };
+    const getSymbol = (name?: string) => name ? name.split(' ').slice(0, 1).map(e => e[0].toUpperCase()) : '??';
 
     return (
         <div className={classes} onMouseOver={changePickle}>
             <span className="number">{props.id}</span>
-            <span className="abbr">{props.name.split(' ').map(e => e[0].toUpperCase()).join('')}</span>
+            <span className="abbr">{props.abbr ?? getSymbol(props.name)}</span>
             <span className="name">{props.name}</span>
-            <span className="weight">0</span>
+            <span className="radio">{props.radio ?? 0}</span>
         </div>
     );
 }

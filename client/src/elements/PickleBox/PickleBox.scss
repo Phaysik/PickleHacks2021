@@ -6,6 +6,14 @@
   border-style: solid;
   outline: 0 solid var(--tab-hover);
 
+  &:not(.Legend) {
+    .name,
+    .radio {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
   &.Legend {
     border-color: transparent;
   }
@@ -20,13 +28,12 @@
     font-weight: 600;
   }
 
-  .name, .weight {
+  .name,
+  .radio {
     font-size: 0.55em;
   }
 
-  .weight {
-    text-overflow: ellipsis;
-    overflow: hidden;
+  .radio {
     pointer-events: none;
   }
 }
