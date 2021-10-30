@@ -10,7 +10,7 @@ const splitSections = {
 };
 
 export default function PickleTable() {
-    const renderPickle = (props: PickleBoxAttrs) => <PickleBox key={props.id} {...props}></PickleBox>;
+    const renderPickle = (props: PickleBoxAttrs) => <PickleBox key={props.id} {...props} />;
     const renderPickleRange = (start: number, stop: number) => els.slice(start, stop).map(renderPickle);
     const renderPickleSplit = (split: 6 | 7) => els.slice(...splitSections[split]).map(el => renderPickle({ ...el, split }));
 
@@ -25,7 +25,7 @@ export default function PickleTable() {
                 <img src={logo} alt="PickleHacks 2021" />
             </div>
             <div className="Note">For elements with no stable isotopes, the mass number of the isotope with the longest half-life is in parentheses.</div>
-            <PickleBox legend id="Atomic" abbr="Symbol" name="Name" weight="Weight"></PickleBox>
+            <PickleBox legend id="Atomic" abbr="Symbol" name="Name" weight="Weight" />
 
             <div className="Period">1</div>
             {renderPickleRange(0, 2)}
