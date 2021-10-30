@@ -1,13 +1,15 @@
 import React from 'react';
 import PicklePeriodic from './PicklePeriodic';
-import './App.css'
+import Header from './elements/Header/Header';
+import Footer from './elements/Footer/Footer';
+import './App.css';
 
-function App() {
+export default function App() {
     return (
         <div className="App">
+            <Header />
             <PicklePeriodic />
+            <Footer />
         </div>
     );
 }
-
-export default App;
