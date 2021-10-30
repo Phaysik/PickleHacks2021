@@ -10,7 +10,18 @@ export default function PickleBox(props: PickleBoxAttrs) {
         Split7: props.split === 7
     });
     const changePickle = () => { if (props.currentPickle) props.currentPickle(props.name); };
-    const getSymbol = (name?: string) => name ? name.split(' ').slice(0, 1).map(e => e[0].toUpperCase()) : '??';
+    const capFirstLetter = (word: string) => {
+        if (word.length === 0) return '';
+        const lowerFirst: string[] = ['a', 'an', 'the', 'and', 'but', 'or', 'nor', 'for', 'so', 'yet', 'the', 'of', 'in'];
+        let char: string = word[0].toUpperCase();
+        if (lowerFirst.includes(word)) return char.toLowerCase();
+        ['\'', '-'].forEach(lowerSplitChar => {
+            if (word.includes(lowerSplitChar)) char += word.split(lowerSplitChar)[1][0].toLowerCase();
+        });
+        return char;
+    };
+    const ignoreNonSymbolChars = (name: string) => name.replace(/[^a-zA-Z\-\'\s]/, ' ');
+    const getSymbol = (name?: string) => name ? ignoreNonSymbolChars(name).split(' ').map(capFirstLetter) : '??';
 
     return (
         <div className={classes} onMouseOver={changePickle}>

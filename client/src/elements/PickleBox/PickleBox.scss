@@ -8,7 +8,8 @@
 
   &:not(.Legend) {
     .name,
-    .radio {
+    .radio,
+    .abbr {
       text-overflow: ellipsis;
       overflow: hidden;
     }
