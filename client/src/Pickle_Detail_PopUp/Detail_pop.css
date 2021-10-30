@@ -16,3 +16,44 @@ img {
   font-size: 20px;
   padding-left: 20px;
 }
+
+.Popup {
+  background-color: rgb(30,30,30);
+  color:lightgray;
+  border-radius: 2.5%;
+}
+
+.facts {
+  background-color: rgb(20,20,20);
+}
+
+.fact_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fact_header {
+  width: 100%;
+  background: rgb(50,50,50);
+  border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.fact_data {
+  border-bottom: 1px solid rgb(100, 100, 100);
+}
+.fact_value {
+  background-color: rgb(35,35,35);
+  width: 30%;
+}
+
+.pickleDesc {
+  border-top: 5px solid rgb(100, 100, 100);
+}
+
+.pickleDesc p, .pickleDesc h4{
+  display: inline;
+}
+
+.pickleDesc p {
+  font-size: 80%;
+}

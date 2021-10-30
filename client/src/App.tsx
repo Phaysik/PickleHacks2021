@@ -1,10 +1,11 @@
 import React from 'react';
-import PickleTable from './elements/PickleTable/PickleTable';
+import PicklePeriodic from './PicklePeriodic';
+import './App.css'
 
 function App() {
     return (
         <div className="App">
-            <PickleTable></PickleTable>
+            <PicklePeriodic />
         </div>
     );
 }
