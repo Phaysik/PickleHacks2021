@@ -3,7 +3,8 @@ import PickleBox from '../PickleBox/PickleBox';
 import logo from './pickle.png';
 import './PickleTable.scss';
 
-const els: PickleBoxAttrs[] = Array(108)
+const els: PickleBoxAttrs[] = 
+	Array(108)
 	.fill({ abbr: 'H', name: 'Hydrogen', weight: 1.008 })
 	.map((el, i) => ({ ...el, id: i + 1 }));
 const splitSections = {
@@ -12,17 +13,16 @@ const splitSections = {
 };
 
 const PickleTable = ({ pickles, currentPickle }: { pickles: PickleData[], currentPickle: React.Dispatch<React.SetStateAction<string | undefined>> }) => {
-	const renderPickle = (props: PickleBoxAttrs) => (
-		<button onClick={() => currentPickle(props.name)} ><PickleBox key={props.id} {...props}/></button>
+	const renderPickle = (props: PickleData) => (
+		<div onClick={() => currentPickle(props.name)} ><PickleBox id={props.id} abbr={props.name} name={props.name} weight={0}/></div>
 	);
 	const renderPickleRange = (start: number, stop: number) =>
-		els.slice(start, stop).map(renderPickle);
+		pickles.slice(start, stop).map(renderPickle);
 	const renderPickleSplit = (split: 6 | 7) =>
-		els
+		pickles
 			.slice(...splitSections[split])
 			.map((el) => renderPickle({ ...el, split }));
 
-	console.log(pickles)
 	return (
 		<div id="PickleTable">
 			<div className="Group"></div>

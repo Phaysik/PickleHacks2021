@@ -13,4 +13,5 @@ export interface PickleData {
 	facts: Object;
 	filePath: string;
 	description: string;
+	split?: 6 | 7;
 }
