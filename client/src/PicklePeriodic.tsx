@@ -47,7 +47,7 @@ export default class PicklePeriodic extends React.Component<PickleProps, PickleS
     }
 
     componentDidMount() {
-        // this.get_information()
+        this.get_information()
     }
 
     updateCurrentPickle(pickle: string) {
@@ -55,11 +55,27 @@ export default class PicklePeriodic extends React.Component<PickleProps, PickleS
     }
 
     private get_information() {
-        fetch('https://bb80c60f-cb82-481f-90e4-65d1c1ffef51.mock.pstmn.io/pickletester')
-            .then(resp => resp.json())
-            .then(data => this.setState({
-                pickles: data
-            }));
+      fetch('http://localhost:5000/pickle/get', {method: 'GET'})
+        .then(resp => resp.json())
+        .then(((data: []) => () => 
+          {
+            console.log(data)
+            this.state = { 
+              pickles: data.map(
+                (item: PickleData) =>
+                ({
+                  id: item.id,
+                  name: item.name,
+                  facts: item.facts,
+                  filePath: item.filePath,
+                  description: item.description,
+                })
+              ),
+              current_pickle: this.state.current_pickle 
+            }
+            console.log(this.state.pickles)
+          }
+        ))
     }
 
     render() {
