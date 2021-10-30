@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PickleTable from './elements/PickleTable/PickleTable';
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+    return (
+        <div className="App">
+            <PickleTable></PickleTable>
+        </div>
+    );
 }
 
 export default App;
