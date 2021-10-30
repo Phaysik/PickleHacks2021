@@ -1,5 +1,4 @@
 import PickleBoxAttrs from '../../types/PickleBoxAttrs';
-import '../../vars.scss';
 import './PickleBox.scss';
 import classNames from 'classnames';
 
