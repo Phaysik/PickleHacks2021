@@ -97,6 +97,7 @@ export default class Detail_pop extends React.Component<
                 <div className="imge_text_container">
                     <div className="leftimage">
                         <img
+                            className="pickleimage"
                             src={this.state.pickle_image_url}
                             alt={'An image of ' + this.state.pickle_name}
                             title={'An image of ' + this.state.pickle_name}
