@@ -62,7 +62,7 @@ export default class Detail_pop extends React.Component<
         this.setState({
             pickle_name: data.name,
             pickle_id: data.id,
-            pickle_image_url: data.filePath,
+            pickle_image_url: `/images/pickle-${data.id}.jpg`,
             pickle_desc: data.description,
             facts: (
                 <div className="facts">

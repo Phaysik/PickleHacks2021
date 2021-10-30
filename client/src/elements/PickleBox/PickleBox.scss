@@ -5,6 +5,8 @@
   border-width: var(--fixedborderwidth);
   border-style: solid;
   outline: 0 solid var(--tab-hover);
+  background-size: cover;
+  background-position: center;
 
   &:not(.Legend) {
     .name,

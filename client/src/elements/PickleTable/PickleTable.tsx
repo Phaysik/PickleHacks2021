@@ -68,7 +68,7 @@ const PickleTable = ({ pickles, currentPickle }: { pickles: PickleData[], curren
             {renderPickleRange(71, 86)}
 
             <div className="Period">7</div>
-            {renderPickleRange(86, 89)}
+            {renderPickleRange(86, 88)}
 
             <div className="Pipe89103">89-103</div>
             <div className="Period Pipe7">7</div>

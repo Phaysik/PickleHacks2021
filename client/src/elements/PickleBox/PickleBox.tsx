@@ -22,9 +22,10 @@ export default function PickleBox(props: PickleBoxAttrs) {
     };
     const ignoreNonSymbolChars = (name: string) => name.replace(/[^a-zA-Z\-\'\s]/, ' ');
     const getSymbol = (name?: string) => name ? ignoreNonSymbolChars(name).split(' ').map(capFirstLetter) : '??';
+    const backgroundImage = `url(/images/pickle-${props.id}.jpg)`;
 
     return (
-        <div className={classes} onMouseOver={changePickle}>
+        <div className={classes} onMouseOver={changePickle} style={{ backgroundImage }}>
             <span className="number">{props.id}</span>
             <span className="abbr">{props.abbr ?? getSymbol(props.name)}</span>
             <span className="name">{props.name}</span>
