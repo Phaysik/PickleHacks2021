@@ -1,0 +1,129 @@
+#PickleTable {
+  grid-gap: var(--gridgap);
+  display: grid;
+  transform-style: preserve-3d;
+  padding: calc(var(--margin) * 1.5) var(--2margin) var(--2margin) var(--margin);
+  background-color: var(--blocks);
+  box-shadow: 0 1px 3px var(--lightshadow), 0 1px 2px var(--darkshadow);
+  grid-template-columns: var(--periods) repeat(var(--groups), minmax(0, 1fr));
+  margin: var(--margin);
+  min-width: calc(var(--min) * var(--groupfactor) - 2 * var(--2margin));
+  font-size: max(
+    var(--base-vw) * var(--aspect-ratio) * var(--sidebar-shrink) /
+      var(--groupfactor),
+    var(--minfont) * var(--sidebar-shrink)
+  );
+  transform: perspective(0);
+  transition: transform 0.6s ease-out, transform-origin 0.6s step-end;
+
+  * {
+    line-height: 1;
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .Group {
+    text-align: center;
+  }
+
+  .Period {
+    align-self: center;
+    text-align: right;
+    padding-right: calc(var(--margin) / 2);
+    z-index: 2;
+  }
+
+  .Group,
+  .Period {
+    color: var(--group);
+    line-height: 1;
+  }
+
+  .Key {
+    display: flex;
+    overflow-x: hidden;
+    contain: size;
+    grid-column: 4 / span 10;
+    grid-row: 2 / span 3;
+    --margin: calc(0.3rem * var(--sidebar-shrink));
+    --2margin: calc(var(--margin) * 2);
+  }
+
+  .NullSpace {
+    grid-column-end: span 5;
+    grid-row-start: 2;
+  }
+
+  .LogoSpace {
+    grid-column: 1 / span 3;
+    grid-row: 9 / span 3;
+    & img {
+        width: 100%;
+    }
+  }
+
+  .Note {
+    grid-row: 9 / 10;
+    grid-column: 5 / span calc(var(--groups) - 3);
+    font-size: 0.7em;
+    margin: var(--margin) var(--2margin);
+    align-self: center;
+  }
+
+  .Legend {
+    grid-column-start: 3;
+    grid-row-start: 2;
+  }
+
+  .SplitPipe {
+    grid-column-start: 4;
+    grid-row: 7 / span 5;
+    background-color: var(--divider);
+    border-color: var(--divideroutline);
+    border-radius: var(--border-width);
+    box-shadow: 0 0 0 var(--border-width) var(--divideroutline);
+    border-width: var(--border-width);
+    border-style: solid;
+  }
+
+  .Pipe5771 {
+    grid-row-start: 7;
+    z-index: 2;
+  }
+
+  .Pipe89103 {
+    grid-row-start: 8;
+    z-index: 2;
+  }
+
+  .Pipe5771,
+  .Pipe89103 {
+    font-size: 0.65em;
+    align-self: center;
+    text-align: center;
+  }
+
+  .Pipe5771,
+  .Pipe89103,
+  .Pipe6,
+  .Pipe7 {
+    grid-column-start: 4;
+    pointer-events: none;
+  }
+
+  .Pipe6,
+  .Pipe7 {
+    margin-right: var(--fixedgridgap);
+  }
+
+  .Split6,
+  .Pipe6 {
+    grid-row-start: 10;
+  }
+
+  .Split7,
+  .Pipe7 {
+    grid-row-start: 11;
+  }
+}

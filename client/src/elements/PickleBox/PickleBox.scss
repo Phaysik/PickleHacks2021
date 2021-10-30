@@ -1,0 +1,32 @@
+.PickleBox {
+  white-space: nowrap;
+  padding: var(--element-pad);
+  border-color: var(--bordercolor);
+  border-width: var(--fixedborderwidth);
+  border-style: solid;
+  outline: 0 solid var(--tab-hover);
+
+  &.Legend {
+    border-color: transparent;
+  }
+
+  .number {
+    font-size: 0.65em;
+    font-weight: normal;
+  }
+
+  .abbr {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+
+  .name, .weight {
+    font-size: 0.55em;
+  }
+
+  .weight {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}
