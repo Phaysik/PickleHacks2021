@@ -1,89 +1,90 @@
 import React from 'react';
 import PickleTable from './elements/PickleTable/PickleTable';
 import Detail_pop from './Pickle_Detail_PopUp/Detail_pop';
+import axios from 'axios';
+import { PickleData } from './types/PickleBoxAttrs';
 
-export type PickleData =
-    {
-        id: number,
-        name: string,
-        facts: Object,
-        filePath: string,
-        description: string;
-    };
+const PicklePeriodic = () => {
+	const [pickles, setPickles] = React.useState<PickleData[]>([]);
 
-type PickleProps =
-    {
-    };
+	React.useEffect(() => {
+		axios
+			.get('http://localhost:5000/pickle/get')
+			.then((res) => {
+				setPickles(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
-type PickleStates =
-    {
-        pickles: PickleData[];
-        current_pickle: string;
-    };
+	return (
+		<div>
+			<PickleTable pickles={pickles} />
+			{/* <Detail_pop pickle_id={current_pickle} /> */}
+		</div>
+	);
+};
 
-export default class PicklePeriodic extends React.Component<PickleProps, PickleStates>
-{
-    constructor(props: PickleProps) {
-        super(props);
+export default PicklePeriodic;
 
-        this.state =
-        {
-            pickles: [
-                {
-                    id: -1,
-                    name: "",
-                    facts: {
-                        radioactivity: 0.5,
-                        lethalDosage: 100,
-                    },
-                    filePath: "",
-                    description: "Lorem Ipsum"
-                }
-            ],
-            current_pickle: ""
-        };
+// export default class PicklePeriodic extends React.Component<
+// 	PickleProps,
+// 	PickleStates
+// > {
+// 	constructor(props: PickleProps) {
+// 		super(props);
 
-        this.updateCurrentPickle = this.updateCurrentPickle.bind(this);
-    }
+// 		this.state = {
+// 			pickles: [
+// 				{
+// 					id: -1,
+// 					name: '',
+// 					facts: {
+// 						radioactivity: 0.5,
+// 						lethalDosage: 100,
+// 					},
+// 					filePath: '',
+// 					description: 'Lorem Ipsum',
+// 				},
+// 			],
+// 			current_pickle: '',
+// 		};
 
-    componentDidMount() {
-        this.get_information()
-    }
+// 		this.updateCurrentPickle = this.updateCurrentPickle.bind(this);
+// 	}
 
-    updateCurrentPickle(pickle: string) {
-        this.setState({ current_pickle: pickle });
-    }
+// 	componentDidMount() {
+// 		// this.get_information()
+// 	}
 
-    private get_information() {
-      fetch('http://localhost:5000/pickle/get', {method: 'GET'})
-        .then(resp => resp.json())
-        .then(((data: []) => () => 
-          {
-            console.log(data)
-            this.state = { 
-              pickles: data.map(
-                (item: PickleData) =>
-                ({
-                  id: item.id,
-                  name: item.name,
-                  facts: item.facts,
-                  filePath: item.filePath,
-                  description: item.description,
-                })
-              ),
-              current_pickle: this.state.current_pickle 
-            }
-            console.log(this.state.pickles)
-          }
-        ))
-    }
+// 	updateCurrentPickle(pickle: string) {
+// 		this.setState({ current_pickle: pickle });
+// 	}
 
-    render() {
-        return (
-            <div>
-                <PickleTable />
-                <Detail_pop name={this.state.current_pickle} pickles={this.state.pickles} />
-            </div>
-        );
-    }
-}
+// 	private get_information() {
+// 		fetch(
+// 			'https://bb80c60f-cb82-481f-90e4-65d1c1ffef51.mock.pstmn.io/pickletester'
+// 		)
+// 			.then((resp) => resp.json())
+// 			.then((data) =>
+// 				this.setState({
+// 					pickles: data,
+// 				})
+// 			);
+// 	}
+
+//     axios.delete(`http://localhost:5000/pickle/delete/${id}`).catch(console.log);
+
+// 	render() {
+// 		return (
+// 			<div>
+// 				<PickleTable />
+// 				<Detail_pop
+// 					name={this.state.current_pickle}
+// 					pickles={this.state.pickles}
+// 				/>
+// 			</div>
+// 		);
+// 	}
+// }
