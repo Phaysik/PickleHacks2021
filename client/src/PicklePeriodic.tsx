@@ -8,7 +8,7 @@ export type PickleData =
   name: string,
   facts: Object,
   filePath: string,
-  desc: string
+  description: string
 }
 
 type PickleProps =
@@ -29,7 +29,18 @@ export default class PicklePeriodic extends React.Component<PickleProps, PickleS
 
     this.state = 
     {
-      pickles: [],
+      pickles: [
+        {
+          id: -1,
+          name: "",
+          facts: {
+            radioactivity: 0.5,
+            lethalDosage: 100,
+          },
+          filePath: "",
+          description: "Lorem Ipsum"
+        }
+      ],
       current_pickle: ""
     }
 
@@ -57,7 +68,7 @@ export default class PicklePeriodic extends React.Component<PickleProps, PickleS
   render() {
     return (
       <div>
-        <PickleTable pickles={this.state.pickles} updatePickle={this.updateCurrentPickle}/>
+        <PickleTable />
         <Detail_pop name={this.state.current_pickle} pickles={this.state.pickles}/>
       </div>
     )

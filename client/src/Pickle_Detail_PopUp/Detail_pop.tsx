@@ -27,15 +27,28 @@ export default class Detail_pop extends React.Component<DetailProps, DetailState
       pickle_id: 0,
       pickle_desc: "",
       pickle_image_url: "/pickle_test_image.jpg",
-      facts: <p>hello</p>
+      facts: null
     }
+
+    this.update()
   }
 
   componentDidUpdate()
   {
-    let data = this.props.pickles[0]
+    this.update()
+  }
 
-    this.setState(
+  private update() {
+    let data = this.props.pickles[
+      this.props.pickles.map( function(e) {
+        return e.name
+      }).indexOf(this.props.name)
+    ]
+
+    let fact_key = Object.keys(data.facts)
+    let fact_values = Object.values(data.facts)
+
+    this.state =
       {
         pickle_id: data.id,
         pickle_image_url: data.filePath,
@@ -44,18 +57,17 @@ export default class Detail_pop extends React.Component<DetailProps, DetailState
           <table className="fact_table">
             <thead><tr className="fact_header"><th align="left">Facts</th><th></th></tr></thead>
               <tbody>
-              {Object.keys(data.facts).map(
-                (key) =>
+              {fact_key.map(
+                (key, index) =>
                 <tr className="fact_data">
-                  <td>{key}</td>
-                  <td align="right" className="fact_value">{data.facts[key]}</td>
+                  <td>{fact_key[index]}</td>
+                  <td align="right" className="fact_value">{fact_values[index]}</td>
                 </tr>
               )}
               </tbody>
             </table>
         </div>
       }
-    )
   }
 
   render() {
