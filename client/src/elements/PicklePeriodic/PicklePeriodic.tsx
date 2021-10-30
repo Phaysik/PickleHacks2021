@@ -11,7 +11,7 @@ const PicklePeriodic = () => {
 
 	React.useEffect(() => {
 		axios
-			.get('http://192.168.0.120:5000/pickle/get')
+			.get('http://localhost:5000/pickle/get')
 			.then((res) => {
 				setPickles(res.data);
 			})
